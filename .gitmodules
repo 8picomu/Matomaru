@@ -1,0 +1,3 @@
+[submodule "Assets/Unity-Extensions"]
+	path = Assets/Unity-Extensions
+	url = git@github.com:pf35301/Unity-Extensions.git
