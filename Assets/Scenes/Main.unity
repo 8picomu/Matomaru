@@ -372,6 +372,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 989570481, guid: 43f8a74ad8d20d646a1ad117309e8caa, type: 3}
+      propertyPath: m_TagString
+      value: DotsParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568299879213473110, guid: 43f8a74ad8d20d646a1ad117309e8caa,
+        type: 3}
+      propertyPath: m_Dot
+      value: 
+      objectReference: {fileID: 3102313533226852600, guid: 00745826ba12bd34db069de4aeb416f3,
+        type: 3}
+    - target: {fileID: 8568299879213473110, guid: 43f8a74ad8d20d646a1ad117309e8caa,
+        type: 3}
+      propertyPath: m_dotsTag
+      value: DotsParent
+      objectReference: {fileID: 0}
     - target: {fileID: 8568299879414311041, guid: 43f8a74ad8d20d646a1ad117309e8caa,
         type: 3}
       propertyPath: m_Name
@@ -440,16 +455,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8568299879213473108}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8568299879213473110
-MonoBehaviour:
+--- !u!50 &8568299879213473110
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8568299879213473109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 149a497cfcad6c14d8bfc40e0e10be33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textureObject: {fileID: 0}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

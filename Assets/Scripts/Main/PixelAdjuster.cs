@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace Matomaru.Main {
     public class PixelAdjuster : MonoBehaviour {
-        private Vector3 cashPosition;
+        private Vector3 m_cashPosition;
 
         private void LateUpdate() {
-            cashPosition = transform.localPosition;
+            m_cashPosition = transform.localPosition;
 
             transform.localPosition = new Vector3(
-                Mathf.RoundToInt(cashPosition.x), 
-                Mathf.RoundToInt(cashPosition.y), 
-                Mathf.RoundToInt(cashPosition.z)
+                Mathf.RoundToInt(m_cashPosition.x), 
+                Mathf.RoundToInt(m_cashPosition.y), 
+                Mathf.RoundToInt(m_cashPosition.z)
                 );
         }
 
         private void OnRenderObject() {
-            transform.localPosition = cashPosition;
+            transform.localPosition = m_cashPosition;
         }
     }
 }
