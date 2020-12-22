@@ -8,7 +8,7 @@ using UniRx.InternalUtil;
 
 namespace Matomaru.Main {
 
-    public class InputController : MonoBehaviour, IInputObservables, MainInputAction.IPlayerActions {
+    public class InputProvider : MonoBehaviour, IInputObservables, MainInputAction.IPlayerActions {
         
         public IObservable<Vector2> LStickObservable { private set; get; }
         private ISubject<Vector2> m_LStickSubject;
