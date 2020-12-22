@@ -23,18 +23,24 @@ namespace Matomaru.Main {
             ServiceLocatorProvider.Instance.Current.Register<IInputObservables>(this);
         }
 
-        public void OnMove(InputAction.CallbackContext context) {
-            if(context.performed) {
-                m_LStickValue = context.ReadValue<Vector2>();
-            }
-        }
-
         private void FixedUpdate() {
-            m_LStickSubject.OnNext(m_LStickValue);
+            m_LStickSubject.OnNext(m_LStickValue.normalized);
         }
 
         private void OnDestroy() {
             m_LStickSubject.OnCompleted();
+        }
+
+        public void OnXAxis(InputAction.CallbackContext context) {
+            if(context.performed) {
+                m_LStickValue.x = context.ReadValue<float>();
+            }
+        }
+
+        public void OnYAxis(InputAction.CallbackContext context) {
+            if(context.performed) {
+                m_LStickValue.y = context.ReadValue<float>();
+            }
         }
     }
 

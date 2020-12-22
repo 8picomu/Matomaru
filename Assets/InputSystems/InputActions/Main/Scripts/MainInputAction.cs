@@ -19,9 +19,17 @@ public class @MainInputAction : IInputActionCollection, IDisposable
             ""id"": ""e84f19ae-5874-40a1-b2ba-f5673088c2d0"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""XAxis"",
                     ""type"": ""Value"",
                     ""id"": ""fd980f37-a584-49ae-9e32-d1d6302fca3e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""YAxis"",
+                    ""type"": ""Value"",
+                    ""id"": ""b2e12175-8940-4509-8958-4274c0ecaa17"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -29,57 +37,68 @@ public class @MainInputAction : IInputActionCollection, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""WASD"",
+                    ""name"": ""DA"",
                     ""id"": ""89d006cc-a9a7-4716-a2ac-cf47e587f4bc"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""XAxis"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""Negative"",
                     ""id"": ""9ba987a8-53ef-4e55-b610-cf78103c1218"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""3b6147cd-cfc6-4d0c-a029-bdfad358e472"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""bbe4259c-a5b5-47e3-9293-0f3e0111bff5"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""XAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""bdc70360-ef2b-4970-9792-9a0621d4a5c2"",
+                    ""name"": ""Positive"",
+                    ""id"": ""3b6147cd-cfc6-4d0c-a029-bdfad358e472"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""XAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WS"",
+                    ""id"": ""44fd644f-e9df-4dfd-ac92-475f71fe3e1d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YAxis"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""0d3f9912-27e5-405d-aeb0-342d57371015"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YAxis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9ca63352-b647-4fdf-8e8f-df1d0747f782"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -90,7 +109,8 @@ public class @MainInputAction : IInputActionCollection, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_XAxis = m_Player.FindAction("XAxis", throwIfNotFound: true);
+        m_Player_YAxis = m_Player.FindAction("YAxis", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,12 +160,14 @@ public class @MainInputAction : IInputActionCollection, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_XAxis;
+    private readonly InputAction m_Player_YAxis;
     public struct PlayerActions
     {
         private @MainInputAction m_Wrapper;
         public PlayerActions(@MainInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @XAxis => m_Wrapper.m_Player_XAxis;
+        public InputAction @YAxis => m_Wrapper.m_Player_YAxis;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -155,22 +177,29 @@ public class @MainInputAction : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @XAxis.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnXAxis;
+                @XAxis.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnXAxis;
+                @XAxis.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnXAxis;
+                @YAxis.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYAxis;
+                @YAxis.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYAxis;
+                @YAxis.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYAxis;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
+                @XAxis.started += instance.OnXAxis;
+                @XAxis.performed += instance.OnXAxis;
+                @XAxis.canceled += instance.OnXAxis;
+                @YAxis.started += instance.OnYAxis;
+                @YAxis.performed += instance.OnYAxis;
+                @YAxis.canceled += instance.OnYAxis;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
+        void OnXAxis(InputAction.CallbackContext context);
+        void OnYAxis(InputAction.CallbackContext context);
     }
 }
