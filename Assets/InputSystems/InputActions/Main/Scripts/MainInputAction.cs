@@ -73,7 +73,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                     ""name"": ""WS"",
                     ""id"": ""44fd644f-e9df-4dfd-ac92-475f71fe3e1d"",
                     ""path"": ""1DAxis"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""YAxis"",
