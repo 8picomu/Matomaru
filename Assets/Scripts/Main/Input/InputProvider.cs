@@ -4,24 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UniRx;
-using UniRx.InternalUtil;
+using pf35301.Extensions.Editor;
 
 namespace Matomaru.Main {
 
     public class InputProvider : MonoBehaviour, IInputObservables, MainInputAction.IPlayerActions {
         
-        public IObservable<Vector2> LStickObservable { private set; get; }
+        public IObservable<Vector2> LStickObservable { get => m_LStickSubject; }
         private ISubject<Vector2> m_LStickSubject;
+        [SerializeField, ReadOnly]
+        private Vector2 m_LStickValue = new Vector2();
 
         private void Awake() {
             m_LStickSubject = new LStick();
-            LStickObservable = m_LStickSubject;
+        }
+
+        private void OnEnable() {
+            ServiceLocatorProvider.Instance.Current.Register<IInputObservables>(this);
         }
 
         public void OnMove(InputAction.CallbackContext context) {
             if(context.performed) {
-                m_LStickSubject.OnNext(context.ReadValue<Vector2>());
+                m_LStickValue = context.ReadValue<Vector2>();
             }
+        }
+
+        private void FixedUpdate() {
+            m_LStickSubject.OnNext(m_LStickValue);
         }
 
         private void OnDestroy() {

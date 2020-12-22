@@ -22,7 +22,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""fd980f37-a584-49ae-9e32-d1d6302fca3e"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -30,7 +30,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": ""WASD"",
-                    ""id"": ""29749451-1395-45cf-846b-d9e688bfedac"",
+                    ""id"": ""89d006cc-a9a7-4716-a2ac-cf47e587f4bc"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -41,7 +41,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""36d77558-60fe-4f2e-8853-ba65da7b0c34"",
+                    ""id"": ""9ba987a8-53ef-4e55-b610-cf78103c1218"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -52,7 +52,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""eebafc9b-58e9-4d9e-bf44-2427d460de2d"",
+                    ""id"": ""3b6147cd-cfc6-4d0c-a029-bdfad358e472"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -63,7 +63,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""beeb9729-c58c-4ff7-b093-7e4da1f84b27"",
+                    ""id"": ""bbe4259c-a5b5-47e3-9293-0f3e0111bff5"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -74,7 +74,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""fb31b53d-cb6e-4c63-862d-52fdd8b72f82"",
+                    ""id"": ""bdc70360-ef2b-4970-9792-9a0621d4a5c2"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
