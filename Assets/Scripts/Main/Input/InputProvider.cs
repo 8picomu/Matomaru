@@ -8,7 +8,7 @@ using pf35301.Extensions.Editor;
 
 namespace Matomaru.Main {
 
-    public class InputProvider : MonoBehaviour, IInputObservables, MainInputAction.IPlayerActions {
+    public class InputProvider : SingletonMonoBehaviour<InputProvider>, IInputObservables, MainInputAction.IPlayerActions {
         
         public IObservable<Vector2> LStickObservable { get => m_LStickSubject; }
         private ISubject<Vector2> m_LStickSubject;
