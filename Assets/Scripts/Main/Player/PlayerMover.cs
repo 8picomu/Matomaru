@@ -17,9 +17,6 @@ namespace Matomaru.Main {
         [SerializeField]
         private float m_MoveGain = 1.0f;
 
-        [SerializeField]
-        private float m_MoveSpeedLimit = 1.0f;
-
         private void Start() {
             if(m_RigidBody == null) {
                 m_RigidBody = GetComponent<Rigidbody2D>();
