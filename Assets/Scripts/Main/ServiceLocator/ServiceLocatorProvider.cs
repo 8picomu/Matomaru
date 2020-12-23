@@ -2,10 +2,9 @@
 
 namespace Matomaru.Main {
     class ServiceLocatorProvider : SingletonMonoBehaviour<ServiceLocatorProvider> {
-        public ServiceLocator Current { get; private set; }
 
-        private void Awake() {
-            Current = new ServiceLocator();
-        }
+        [SerializeField]
+        public ServiceLocator Current { get; private set; } = new ServiceLocator();
+
     }
 }

@@ -17,9 +17,6 @@ namespace Matomaru.Main {
 
         private void Awake() {
             m_LStickSubject = new LStick();
-        }
-
-        private void OnEnable() {
             ServiceLocatorProvider.Instance.Current.Register<IInputObservables>(this);
         }
 
