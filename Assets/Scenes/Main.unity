@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CanvasXSize: 10
   m_CanvasYSize: 10
+  m_IsAutoBuild: 0
   m_CanvansIncludingPixel: 76
 --- !u!1 &390127293
 GameObject:
@@ -634,6 +635,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_dotsTag
       value: DotsParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568299879213473110, guid: 43f8a74ad8d20d646a1ad117309e8caa,
+        type: 3}
+      propertyPath: m_CanvasXSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568299879213473110, guid: 43f8a74ad8d20d646a1ad117309e8caa,
+        type: 3}
+      propertyPath: m_CanvasYSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568299879213473110, guid: 43f8a74ad8d20d646a1ad117309e8caa,
+        type: 3}
+      propertyPath: m_IsAutoBuild
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8568299879414311041, guid: 43f8a74ad8d20d646a1ad117309e8caa,
         type: 3}
