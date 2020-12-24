@@ -19,7 +19,7 @@ namespace Matomaru.Main.Editor {
                 foreach(ref var column in TargetPixelBuilder.Canvas.AsSpan()) {
                     using(new EditorGUILayout.HorizontalScope()) {
                         foreach(ref var item in column.AsSpan()) {
-                            item = EditorGUILayout.Toggle(item);
+                            item = EditorGUILayout.Toggle(item, GUILayout.Width(15));
                         }
                     }
                 }
