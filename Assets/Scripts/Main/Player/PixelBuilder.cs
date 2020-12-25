@@ -1,22 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using pf35301.Extensions;
 
 namespace Matomaru.Main {
-    [ExecuteInEditMode]
-    public class PixelBuilder : MonoBehaviour {
+    //[ExecuteInEditMode]
+    public class PixelBuilder : MonoBehaviour, IPixelCanvas {
+
+        [Header("Dot")]
+
+        [SerializeField]
+        private GameObject m_Dot;
 
         [Header("Canvas")]
 
         [SerializeField]
-        private int m_CanvasXSize;
+        public int CanvasXSize;
         [SerializeField]
-        private int m_CanvasYSize;
+        public int CanvasYSize;
 
-        //[X][Y]
+        //[Y][X]
         [SerializeField]
-        public bool[][] Canvas;
+        public List<PixelCanvasListWrapper> Canvas { get; set; }
+
+        [SerializeField]
+        private PixelCanvasData m_CanvasData;
 
         [Header("AutoBuild")]
         [SerializeField]
@@ -25,12 +35,45 @@ namespace Matomaru.Main {
         [SerializeField]
         private uint m_CanvansIncludingPixel;
 
-        private void OnValidate() {
-            Canvas = Enumerable.Range(0, m_CanvasYSize).Select(y => (new bool[m_CanvasXSize]).Select(x => true).ToArray()).ToArray();
+        private void Awake() { 
+            if(m_IsAutoBuild == false) {
+                if(m_CanvasData == null) throw new NullReferenceException();
+
+                Canvas = new List<PixelCanvasListWrapper>(m_CanvasData.Canvas);
+
+                return;
+            }
         }
 
-        private void OnEnable() {
+        private void Start() {
+            //if(Dot == null) throw new NullReferenceException();
 
+            if(CanvasXSize % 2 != 0) {
+                Debug.LogError("Please set odd in CanvasXSize");
+                return;
+            }
+            if(CanvasYSize % 2 != 0) {
+                Debug.LogError("Please set odd in CanvasYSize");
+                return;
+            }
+
+
+            foreach(var record in Canvas.Select((value, index) => new { value, index })) {
+                foreach(var item in record.value.List.Select((value, index) => new { value, index })) {
+                    if(item.value) {
+                        var dot = Instantiate(m_Dot);
+                        dot.transform.parent = transform;
+                        dot.name = $"{item.index} : {record.index}";
+                        dot.transform.localPosition =
+                            new Vector3(item.index - (CanvasXSize / 2),
+                                        (CanvasYSize / 2) - record.index,
+                                        0);
+                    }
+                }
+            }
         }
     }
+
+    [Serializable]
+    public class PixelCanvasListWrapper : ListWrapper<bool> { }
 }

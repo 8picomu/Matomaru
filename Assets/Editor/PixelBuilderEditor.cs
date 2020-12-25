@@ -12,7 +12,7 @@ namespace Matomaru.Main.Editor {
             
             if(GUILayout.Button("Open PixelEditor")) {
                 var instance = (PixelBuilder)target;
-                EditorWindowPixelBuilder.Open(ref instance);
+                EditorWindowPixelBuilder.Open(instance.CanvasYSize, instance.CanvasXSize);
             }
         }
     }
