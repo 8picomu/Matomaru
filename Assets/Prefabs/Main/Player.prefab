@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4538017653393079927}
   - component: {fileID: 4538017653393079926}
   m_Layer: 0
-  m_Name: DotsObject
+  m_Name: Pixels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
