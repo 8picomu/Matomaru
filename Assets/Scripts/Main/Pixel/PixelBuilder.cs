@@ -9,6 +9,11 @@ namespace Matomaru.Main {
     //[ExecuteInEditMode]
     public class PixelBuilder : MonoBehaviour, IPixelCanvas {
 
+        [Header("CanvasData")]
+
+        [SerializeField]
+        private PixelCanvasData m_CanvasData;
+
         [Header("Dot")]
 
         [SerializeField]
@@ -25,14 +30,9 @@ namespace Matomaru.Main {
         [SerializeField]
         public List<PixelCanvasListWrapper> Canvas { get; set; }
 
-        [SerializeField]
-        private PixelCanvasData m_CanvasData;
-
         [Header("AutoBuild")]
         [SerializeField]
         private bool m_IsAutoBuild;
-
-
 
         [SerializeField]
         private uint m_CanvansIncludingPixel;

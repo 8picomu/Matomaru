@@ -33,6 +33,14 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""01eac69d-ffcf-4c28-be6e-d4c4f3ba82a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -101,6 +109,17 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                     ""action"": ""YAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96a1bf77-6aa6-43d7-bfa1-29851ca4f033"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -111,6 +130,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_XAxis = m_Player.FindAction("XAxis", throwIfNotFound: true);
         m_Player_YAxis = m_Player.FindAction("YAxis", throwIfNotFound: true);
+        m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,12 +182,14 @@ public class @MainInputAction : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_XAxis;
     private readonly InputAction m_Player_YAxis;
+    private readonly InputAction m_Player_Click;
     public struct PlayerActions
     {
         private @MainInputAction m_Wrapper;
         public PlayerActions(@MainInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @XAxis => m_Wrapper.m_Player_XAxis;
         public InputAction @YAxis => m_Wrapper.m_Player_YAxis;
+        public InputAction @Click => m_Wrapper.m_Player_Click;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -183,6 +205,9 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 @YAxis.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYAxis;
                 @YAxis.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYAxis;
                 @YAxis.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYAxis;
+                @Click.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -193,6 +218,9 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 @YAxis.started += instance.OnYAxis;
                 @YAxis.performed += instance.OnYAxis;
                 @YAxis.canceled += instance.OnYAxis;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
             }
         }
     }
@@ -201,5 +229,6 @@ public class @MainInputAction : IInputActionCollection, IDisposable
     {
         void OnXAxis(InputAction.CallbackContext context);
         void OnYAxis(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }

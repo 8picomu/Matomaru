@@ -15,6 +15,9 @@ namespace Matomaru.Main {
         [SerializeField, ReadOnly]
         private Vector2 m_LStickValue = new Vector2();
 
+        public IObservable<Unit> RightClickObservable { get => m_RightClickObservable; }
+        private ISubject<Unit> m_RightClickObservable;
+
         private void Awake() {
             m_LStickSubject = new LStick();
             ServiceLocatorProvider.Instance.Current.Register<IInputObservables>(this);
@@ -37,6 +40,12 @@ namespace Matomaru.Main {
         public void OnYAxis(InputAction.CallbackContext context) {
             if(context.performed) {
                 m_LStickValue.y = context.ReadValue<float>();
+            }
+        }
+
+        public void OnClick(InputAction.CallbackContext context) {
+            if(context.performed) {
+                m_RightClickObservable.OnNext(new Unit());
             }
         }
     }
