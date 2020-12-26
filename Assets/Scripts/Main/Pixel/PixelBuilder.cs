@@ -32,6 +32,8 @@ namespace Matomaru.Main {
         [SerializeField]
         private bool m_IsAutoBuild;
 
+
+
         [SerializeField]
         private uint m_CanvansIncludingPixel;
 
@@ -40,6 +42,9 @@ namespace Matomaru.Main {
                 if(m_CanvasData == null) throw new NullReferenceException();
 
                 Canvas = new List<PixelCanvasListWrapper>(m_CanvasData.Canvas);
+
+                CanvasXSize = m_CanvasData.CanvasXSize;
+                CanvasYSize = m_CanvasData.CanvasYSize;
 
                 return;
             }
@@ -56,7 +61,6 @@ namespace Matomaru.Main {
                 Debug.LogError("Please set odd in CanvasYSize");
                 return;
             }
-
 
             foreach(var record in Canvas.Select((value, index) => new { value, index })) {
                 foreach(var item in record.value.List.Select((value, index) => new { value, index })) {

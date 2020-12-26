@@ -56,7 +56,7 @@ namespace Matomaru.Main.Editor {
                     }
 
                     if(GUILayout.Button("Create ScriptableObject")) {
-                        CreateScriptableObject(new List<PixelCanvasListWrapper>(m_copy));
+                        CreateScriptableObject(new List<PixelCanvasListWrapper>(m_copy), m_copy[0].List.Count, m_copy.Count);
                     }
                 }
             }
@@ -72,10 +72,12 @@ namespace Matomaru.Main.Editor {
                     }).ToList();
         }
 
-        private void CreateScriptableObject(List<PixelCanvasListWrapper> list) {
+        private void CreateScriptableObject(List<PixelCanvasListWrapper> list, int CanvasXSize, int CanvasYSize) {
             var so = CreateInstance<PixelCanvasData>();
 
             so.Canvas = list;
+            so.CanvasXSize = CanvasXSize;
+            so.CanvasYSize = CanvasYSize;
             ProjectWindowUtil.CreateAsset(so, "PixelCanvasData.asset");
         }
     }
