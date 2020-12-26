@@ -7,10 +7,13 @@ namespace Matomaru.Main {
         [SerializeField]
         private GameObject m_Target;
 
+        [SerializeField]
+        private Vector2 m_Offset;
+
         private void LateUpdate() {
             if(m_Target != null) {
                 var pos = m_Target.transform.position;
-                transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+                transform.position = new Vector3(pos.x + m_Offset.x, pos.y + m_Offset.y, transform.position.z);
             } 
         }
     }
