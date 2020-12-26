@@ -10,43 +10,66 @@ namespace Matomaru.Main.Editor {
 
         private List<PixelCanvasListWrapper> m_copy;
 
+        public int CanvasXSize;
+        public int CanvasYSize;
+
         public static void Open(int CanvasYSize, int CanvasXSize) {
 
             var window = GetWindow<EditorWindowPixelBuilder>("PixelEditor");
 
-            //DeepCopy
-            //var copyPixelList = new List<PixelCanvasListWrapper>();
-            //foreach(var item in target.Canvas) {
-            //    var pixelCanvasListWrapper = new PixelCanvasListWrapper();
-            //    pixelCanvasListWrapper.List = new List<bool>(item.List);
-            //    copyPixelList.Add(pixelCanvasListWrapper);
-            //}
+            window.CanvasXSize = CanvasXSize;
+            window.CanvasYSize = CanvasYSize;
 
-            window.m_copy = Enumerable.Range(0, CanvasYSize).Select(
-                    y => {
-                       //(new bool[m_CanvasXSize]).Select(x => true).ToArray()
-                        var list = new bool[CanvasXSize].Select(x => true).ToList();
-                        var wrapper = new PixelCanvasListWrapper();
-                        wrapper.List = list;
-                        return wrapper;
-                    }).ToList();
+            window.m_copy = window.createEmptyPixelCanvasData();
+        }
+
+        [MenuItem("Window/PixelEditor")]
+        public static void OpenByMenu() {
+            var window = GetWindow<EditorWindowPixelBuilder>("PixelEditor");
+
+            window.CanvasXSize = 10;
+            window.CanvasYSize = 10;
+
+            window.m_copy = window.createEmptyPixelCanvasData();
         }
 
         private void OnGUI() {
 
             using(new EditorGUILayout.VerticalScope()) {
-                for(var recordIndex = 0; recordIndex < m_copy.Count; recordIndex++) { 
-                    using(new EditorGUILayout.HorizontalScope()) {
-                        for(var itemIndex = 0; itemIndex < m_copy[recordIndex].List.Count; itemIndex++) {
-                            m_copy[recordIndex].List[itemIndex] = EditorGUILayout.Toggle(m_copy[recordIndex].List[itemIndex], GUILayout.Width(15));
-                        }
-                    }
+
+                using(new EditorGUILayout.HorizontalScope()) {
+                    CanvasXSize = EditorGUILayout.IntField("XSize", CanvasXSize);
+                    CanvasYSize = EditorGUILayout.IntField("YSize", CanvasYSize);
                 }
 
-                if(GUILayout.Button("Create ScriptableObject")) {
-                    CreateScriptableObject(new List<PixelCanvasListWrapper>(m_copy));
+                if(GUILayout.Button("Recreate CanvasData")) {
+                    m_copy = createEmptyPixelCanvasData();
+                }
+
+                using(new EditorGUILayout.VerticalScope()) {
+                    for(var recordIndex = 0; recordIndex < m_copy.Count; recordIndex++) {
+                        using(new EditorGUILayout.HorizontalScope()) {
+                            for(var itemIndex = 0; itemIndex < m_copy[recordIndex].List.Count; itemIndex++) {
+                                m_copy[recordIndex].List[itemIndex] = EditorGUILayout.Toggle(m_copy[recordIndex].List[itemIndex], GUILayout.Width(15));
+                            }
+                        }
+                    }
+
+                    if(GUILayout.Button("Create ScriptableObject")) {
+                        CreateScriptableObject(new List<PixelCanvasListWrapper>(m_copy));
+                    }
                 }
             }
+        }
+
+        private List<PixelCanvasListWrapper> createEmptyPixelCanvasData() {
+            return Enumerable.Range(0, CanvasYSize).Select(
+                    y => {
+                        var list = new bool[CanvasXSize].Select(x => true).ToList();
+                        var wrapper = new PixelCanvasListWrapper();
+                        wrapper.List = list;
+                        return wrapper;
+                    }).ToList();
         }
 
         private void CreateScriptableObject(List<PixelCanvasListWrapper> list) {
