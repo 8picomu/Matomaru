@@ -46,7 +46,7 @@ namespace Matomaru.Main {
         }
 
         private void Start() {
-            //if(Dot == null) throw new NullReferenceException();
+            if(m_Dot == null) throw new NullReferenceException();
 
             if(CanvasXSize % 2 != 0) {
                 Debug.LogError("Please set odd in CanvasXSize");

@@ -29,7 +29,7 @@ namespace Matomaru.Main {
             m_InputObservables.LStickObservable.Subscribe(
                 vec => {
                     m_RigidBody.AddForce(vec * m_MoveGain);
-                });
+                }).AddTo(this);
         }
     }
 }
