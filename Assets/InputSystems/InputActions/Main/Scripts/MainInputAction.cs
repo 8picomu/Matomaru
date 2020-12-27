@@ -41,6 +41,14 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""fdf20fe3-0be7-4f17-ae9d-6bb415a039a8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -113,11 +121,22 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""96a1bf77-6aa6-43d7-bfa1-29851ca4f033"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50a08710-ba5b-471c-b613-c6c69102e4fb"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -131,6 +150,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
         m_Player_XAxis = m_Player.FindAction("XAxis", throwIfNotFound: true);
         m_Player_YAxis = m_Player.FindAction("YAxis", throwIfNotFound: true);
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
+        m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_XAxis;
     private readonly InputAction m_Player_YAxis;
     private readonly InputAction m_Player_Click;
+    private readonly InputAction m_Player_MousePosition;
     public struct PlayerActions
     {
         private @MainInputAction m_Wrapper;
@@ -190,6 +211,7 @@ public class @MainInputAction : IInputActionCollection, IDisposable
         public InputAction @XAxis => m_Wrapper.m_Player_XAxis;
         public InputAction @YAxis => m_Wrapper.m_Player_YAxis;
         public InputAction @Click => m_Wrapper.m_Player_Click;
+        public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 @Click.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
                 @Click.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
                 @Click.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
+                @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @MainInputAction : IInputActionCollection, IDisposable
                 @Click.started += instance.OnClick;
                 @Click.performed += instance.OnClick;
                 @Click.canceled += instance.OnClick;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @MainInputAction : IInputActionCollection, IDisposable
         void OnXAxis(InputAction.CallbackContext context);
         void OnYAxis(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

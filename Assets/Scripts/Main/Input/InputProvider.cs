@@ -13,13 +13,17 @@ namespace Matomaru.Main {
         public IObservable<Vector2> LStickObservable { get => m_LStickSubject; }
         private ISubject<Vector2> m_LStickSubject;
         [SerializeField, ReadOnly]
-        private Vector2 m_LStickValue = new Vector2();
+        public Vector2 m_LStickValue = new Vector2();
 
-        public IObservable<Unit> RightClickObservable { get => m_RightClickObservable; }
-        private ISubject<Unit> m_RightClickObservable;
+        public IObservable<Vector2> RightClickObservable { get => m_RightClickSubject; }
+        private ISubject<Vector2> m_RightClickSubject;
+
+        [SerializeField, ReadOnly]
+        public Vector2 m_MousePosition = new Vector2();
 
         private void Awake() {
             m_LStickSubject = new LStick();
+            m_RightClickSubject = new RightClickSubject();
             ServiceLocatorProvider.Instance.Current.Register<IInputObservables>(this);
         }
 
@@ -45,10 +49,18 @@ namespace Matomaru.Main {
 
         public void OnClick(InputAction.CallbackContext context) {
             if(context.performed) {
-                m_RightClickObservable.OnNext(new Unit());
+                m_RightClickSubject.OnNext(m_MousePosition);
+            }
+        }
+
+        public void OnMousePosition(InputAction.CallbackContext context) {
+            if(context.performed) {
+                m_MousePosition = context.ReadValue<Vector2>();
             }
         }
     }
 
     internal class LStick : Subject<Vector2> { }
+
+    internal class RightClickSubject : Subject<Vector2> { }
 }

@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be62ab2f10db6854ea6266733cc4fa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CanvasData: {fileID: 11400000, guid: 9bf2ccc0243a9454da9ce011d5d7c114, type: 2}
   m_Dot: {fileID: 3102313533226852600, guid: 00745826ba12bd34db069de4aeb416f3, type: 3}
   CanvasXSize: 10
   CanvasYSize: 10
-  m_CanvasData: {fileID: 11400000, guid: 64a699ebbb4d37b4787a723d46b70fe6, type: 2}
   m_IsAutoBuild: 0
   m_CanvansIncludingPixel: 0
 --- !u!1 &5193477566032831986
