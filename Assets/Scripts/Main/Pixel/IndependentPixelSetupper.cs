@@ -16,6 +16,7 @@ namespace Matomaru.Main {
         public void Click() {
             var rigid = gameObject.AddComponent<Rigidbody2D>();
             rigid.mass = 0;
+            rigid.gravityScale = 0;
             rigid.freezeRotation = true;
 
             m_PixelAdjuster.enabled = true;

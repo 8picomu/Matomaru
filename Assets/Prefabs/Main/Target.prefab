@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcb3b214c2a7bb46a20ca4843be3b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IClickableChildren:
+  IClickableGameObjectChildren:
   - {fileID: 601182830550329620}
 --- !u!1 &601182830550329620
 GameObject:
@@ -131,7 +131,6 @@ MonoBehaviour:
   CanvasYSize: 10
   m_IsAutoBuild: 0
   m_CanvansIncludingPixel: 0
-  m_PixelBreaker: {fileID: 8729887271826056153}
 --- !u!114 &8729887271826056153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcb3b214c2a7bb46a20ca4843be3b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IClickableChildren: []
+  IClickableGameObjectChildren: []

@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 8568299879213473109}
   m_Offset: {x: -0.5, y: 0.5}
+  m_Smoothing: 5
 --- !u!114 &390127298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,12 +548,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1740950179 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 601182830550329620, guid: 608d28371cadd5b46b0d4b3515130e3e,
-    type: 3}
-  m_PrefabInstance: {fileID: 601182829287976644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &601182829287976644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -573,12 +568,12 @@ PrefabInstance:
     - target: {fileID: 601182829332847732, guid: 608d28371cadd5b46b0d4b3515130e3e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 601182829332847732, guid: 608d28371cadd5b46b0d4b3515130e3e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 601182829332847732, guid: 608d28371cadd5b46b0d4b3515130e3e,
         type: 3}
@@ -620,16 +615,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6831241379471225323, guid: 608d28371cadd5b46b0d4b3515130e3e,
-        type: 3}
-      propertyPath: IClickableGameObjectChildren.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831241379471225323, guid: 608d28371cadd5b46b0d4b3515130e3e,
-        type: 3}
-      propertyPath: IClickableGameObjectChildren.Array.data[0]
-      value: 
-      objectReference: {fileID: 1740950179}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 608d28371cadd5b46b0d4b3515130e3e, type: 3}
 --- !u!1001 &4538017654447962279
