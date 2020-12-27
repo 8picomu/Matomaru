@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Matomaru.Main {
-    public class PixelBreaker : MonoBehaviour, IClickable {
+    public class PixelBreaker : MonoBehaviour, IPixelBreaker {
 
         [SerializeField]
-        public List<GameObject> m_IClickableChildren;
+        private List<GameObject> IClickableGameObjectChildren;
+
+        public List<IClickable> IClickableChildren { get; set; } = new List<IClickable>();
 
         public void Click() {
-            foreach(var child in m_IClickableChildren) {
-                child.GetComponent<IClickable>()?.Click();
+
+            if(IClickableGameObjectChildren.Count != 0) {
+                foreach(var child in IClickableGameObjectChildren) {
+                    child.GetComponent<IClickable>()?.Click();
+                }
+            }
+
+            foreach(var child in IClickableChildren) {
+                child.Click();
             }
 
             transform.DetachChildren();

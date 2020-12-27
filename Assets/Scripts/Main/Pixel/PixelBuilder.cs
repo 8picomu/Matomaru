@@ -37,6 +37,8 @@ namespace Matomaru.Main {
         [SerializeField]
         private uint m_CanvansIncludingPixel;
 
+        private IPixelBreaker m_IPixelBreaker;
+
         private void Awake() { 
             if(m_IsAutoBuild == false) {
                 if(m_CanvasData == null) throw new NullReferenceException();
@@ -62,6 +64,8 @@ namespace Matomaru.Main {
                 return;
             }
 
+            m_IPixelBreaker = GetComponent<IPixelBreaker>();
+
             foreach(var record in Canvas.Select((value, index) => new { value, index })) {
                 foreach(var item in record.value.List.Select((value, index) => new { value, index })) {
                     if(item.value) {
@@ -72,6 +76,7 @@ namespace Matomaru.Main {
                             new Vector3(item.index - (CanvasXSize / 2),
                                         (CanvasYSize / 2) - record.index,
                                         0);
+                        m_IPixelBreaker?.IClickableChildren.Add(dot.GetComponent<IClickable>());
                     }
                 }
             }

@@ -131,6 +131,7 @@ MonoBehaviour:
   CanvasYSize: 10
   m_IsAutoBuild: 0
   m_CanvansIncludingPixel: 0
+  m_PixelBreaker: {fileID: 8729887271826056153}
 --- !u!114 &8729887271826056153
 MonoBehaviour:
   m_ObjectHideFlags: 0
