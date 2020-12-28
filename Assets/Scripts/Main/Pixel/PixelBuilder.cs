@@ -76,7 +76,7 @@ namespace Matomaru.Main {
                             new Vector3(item.index - (CanvasXSize / 2),
                                         (CanvasYSize / 2) - record.index,
                                         0);
-                        m_IPixelBreaker?.IClickableChildren.Add(dot.GetComponent<IClickable>());
+                        m_IPixelBreaker?.ISetupChildren.Add(dot.GetComponent<ISetup>());
                     }
                 }
             }

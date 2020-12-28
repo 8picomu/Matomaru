@@ -8,18 +8,18 @@ namespace Matomaru.Main {
         [SerializeField]
         private List<GameObject> IClickableGameObjectChildren;
 
-        public List<IClickable> IClickableChildren { get; set; } = new List<IClickable>();
+        public List<ISetup> ISetupChildren { get; set; } = new List<ISetup>();
 
-        public void Click() {
+        public void ClickWithHitPoint(Vector2 hitPoint) {
 
             if(IClickableGameObjectChildren.Count != 0) {
                 foreach(var child in IClickableGameObjectChildren) {
-                    child.GetComponent<IClickable>()?.Click();
+                    child.GetComponent<IClickable>()?.ClickWithHitPoint(hitPoint);
                 }
             }
 
-            foreach(var child in IClickableChildren) {
-                child.Click();
+            foreach(var child in ISetupChildren) {
+                child.Setup(hitPoint);
             }
 
             transform.DetachChildren();

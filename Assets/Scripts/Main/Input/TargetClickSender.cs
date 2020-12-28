@@ -14,7 +14,7 @@ namespace Matomaru.Main {
                 var hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
 
                 if(hit) {
-                    hit.transform.GetComponent<IClickable>()?.Click();
+                    hit.transform.GetComponent<IClickable>()?.ClickWithHitPoint(hit.point);
                 }
             });
         }

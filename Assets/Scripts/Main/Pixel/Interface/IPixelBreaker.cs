@@ -3,6 +3,6 @@
 namespace Matomaru.Main {
     public interface IPixelBreaker : IClickable {
 
-        List<IClickable> IClickableChildren { get; set; }
+        List<ISetup> ISetupChildren { get; set; }
     }
 }
