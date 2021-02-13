@@ -6,7 +6,6 @@ using UnityEngine;
 using pf35301.Extensions;
 
 namespace Matomaru.Main {
-    //[ExecuteInEditMode]
     public class PixelBuilder : MonoBehaviour, IPixelCanvas {
 
         [Header("CanvasData")]
@@ -76,7 +75,7 @@ namespace Matomaru.Main {
                             new Vector3(item.index - (CanvasXSize / 2),
                                         (CanvasYSize / 2) - record.index,
                                         0);
-                        m_IPixelBreaker?.ISetupChildren.Add(dot.GetComponent<ISetup>());
+                        m_IPixelBreaker?.ISetupChildren.Add(dot.GetComponent<IIndependentPixel>());
                     }
                 }
             }

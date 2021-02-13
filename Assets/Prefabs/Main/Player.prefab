@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4538017653393079912
+--- !u!1 &2997407934584481900
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4538017653393079927}
-  - component: {fileID: 4538017653393079926}
-  m_Layer: 0
-  m_Name: Pixels
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4538017653393079927
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4538017653393079912}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5193477566032831998}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4538017653393079926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4538017653393079912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be62ab2f10db6854ea6266733cc4fa33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CanvasData: {fileID: 11400000, guid: 9bf2ccc0243a9454da9ce011d5d7c114, type: 2}
-  m_Dot: {fileID: 3102313533226852600, guid: 00745826ba12bd34db069de4aeb416f3, type: 3}
-  CanvasXSize: 10
-  CanvasYSize: 10
-  m_IsAutoBuild: 0
-  m_CanvansIncludingPixel: 0
---- !u!1 &5193477566032831986
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5193477566032831998}
-  - component: {fileID: 5193477566032831999}
-  - component: {fileID: 5193477566032831984}
-  - component: {fileID: 5193477566032831985}
+  - component: {fileID: 2997407934584481891}
+  - component: {fileID: 2997407934584481888}
+  - component: {fileID: 2997407934584481889}
+  - component: {fileID: 2997407934584481902}
+  - component: {fileID: 2997407934584481903}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,29 +20,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5193477566032831998
+--- !u!4 &2997407934584481891
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193477566032831986}
+  m_GameObject: {fileID: 2997407934584481900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4538017653393079927}
+  - {fileID: 6877095540690253909}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &5193477566032831999
+--- !u!50 &2997407934584481888
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193477566032831986}
+  m_GameObject: {fileID: 2997407934584481900}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -104,13 +56,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5193477566032831984
+--- !u!114 &2997407934584481889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193477566032831986}
+  m_GameObject: {fileID: 2997407934584481900}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5cde1c500305fe4bad9096766d9dcc3, type: 3}
@@ -118,15 +70,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RigidBody: {fileID: 0}
   m_MoveGain: 200
---- !u!114 &5193477566032831985
+--- !u!114 &2997407934584481902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193477566032831986}
+  m_GameObject: {fileID: 2997407934584481900}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39f9cc17e2b75cc429ec95d94aef4eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2997407934584481903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997407934584481900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba56c4da95d5d5a4a84a1c6eaf690e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pixels: {fileID: 6877095540690253907}
+--- !u!1 &6877095540690253907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6877095540690253909}
+  - component: {fileID: 6877095540690253906}
+  m_Layer: 0
+  m_Name: Pixels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6877095540690253909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877095540690253907}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2997407934584481891}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6877095540690253906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877095540690253907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be62ab2f10db6854ea6266733cc4fa33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CanvasData: {fileID: 11400000, guid: 9bf2ccc0243a9454da9ce011d5d7c114, type: 2}
+  m_Dot: {fileID: 3102313533226852600, guid: 00745826ba12bd34db069de4aeb416f3, type: 3}
+  CanvasXSize: 10
+  CanvasYSize: 10
+  m_IsAutoBuild: 0
+  m_CanvansIncludingPixel: 0

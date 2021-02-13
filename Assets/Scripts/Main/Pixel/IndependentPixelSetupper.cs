@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
+using pf35301.Extensions.Editor;
 
 namespace Matomaru.Main {
     [RequireComponent(typeof(PixelAdjuster))]
-    public class IndependentPixelSetupper : MonoBehaviour, ISetup {
+    public class IndependentPixelSetupper : MonoBehaviour, IIndependentPixel {
+
+        public bool IsIndependent { get; private set; } = false;
+
+        [SerializeField, ReadOnly]
+        private Rigidbody2D m_Rigid;
 
         [SerializeField]
         private PixelAdjuster m_PixelAdjuster;
@@ -16,14 +22,23 @@ namespace Matomaru.Main {
         }
 
         public void Setup(Vector2 hitPoint) {
-            var rigid = gameObject.AddComponent<Rigidbody2D>();
-            rigid.mass = 0;
-            rigid.gravityScale = 0;
-            rigid.freezeRotation = true;
+            m_Rigid = gameObject.AddComponent<Rigidbody2D>();
+            m_Rigid.mass = 0;
+            m_Rigid.gravityScale = 0;
+            m_Rigid.freezeRotation = true;
 
             m_PixelAdjuster.enabled = true;
 
-            m_PixelDiffusioner?.AddForceWithHitPoint(rigid, hitPoint);
+            m_PixelDiffusioner?.AddForceWithHitPoint(m_Rigid, hitPoint);
+
+            IsIndependent = true;
+        }
+
+        public void FollowTarget(Transform target) {
+            GetComponent<IPixelAdjuster>().PixelAdjust();
+            Destroy(m_Rigid);
+            transform.parent = target;
+            IsIndependent = false;
         }
     }
 }

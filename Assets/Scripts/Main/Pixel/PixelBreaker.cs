@@ -8,7 +8,7 @@ namespace Matomaru.Main {
         [SerializeField]
         private List<GameObject> IClickableGameObjectChildren;
 
-        public List<ISetup> ISetupChildren { get; set; } = new List<ISetup>();
+        public List<IIndependentPixel> ISetupChildren { get; set; } = new List<IIndependentPixel>();
 
         public void ClickWithHitPoint(Vector2 hitPoint) {
 
