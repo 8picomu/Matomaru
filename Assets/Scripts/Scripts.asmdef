@@ -1,15 +1,19 @@
 {
     "name": "Scripts",
+    "rootNamespace": "",
     "references": [
         "GUID:560b04d1a97f54a4e82edc0cbbb69285",
         "GUID:0635ab8a3285b7c4faf1bf897aa51a34",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:5b63ccbec40bdeb46ac66a941ecd0128"
+        "GUID:5b63ccbec40bdeb46ac66a941ecd0128",
+        "GUID:6ba72fb5db2f3d546baab4e80edc4d69"
     ],
     "includePlatforms": [
         "Editor",
-        "WebGL"
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
