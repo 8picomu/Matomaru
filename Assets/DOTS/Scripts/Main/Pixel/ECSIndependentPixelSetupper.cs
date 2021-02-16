@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Entities;
 
-using pf35301.Extensions.Editor;
+using eightpicomu.Extensions.Editor;
 using Matomaru.Main;
 
 namespace Matomaru.ECS.Main {

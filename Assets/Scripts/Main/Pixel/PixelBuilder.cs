@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using pf35301.Extensions;
+using eightpicomu.Extensions;
 
 namespace Matomaru.Main {
     public class PixelBuilder : MonoBehaviour, IPixelCanvas {

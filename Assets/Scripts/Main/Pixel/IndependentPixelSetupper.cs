@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using pf35301.Extensions.Editor;
+using eightpicomu.Extensions.Editor;
 
 namespace Matomaru.Main {
     //[RequireComponent(typeof(PixelAdjuster))]

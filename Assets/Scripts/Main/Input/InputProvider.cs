@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UniRx;
-using pf35301.Extensions.Editor;
+using eightpicomu.Extensions.Editor;
 
 namespace Matomaru.Main {
 
