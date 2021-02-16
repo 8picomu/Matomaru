@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 6386062595361198463}
   - component: {fileID: 9104371657807437527}
   - component: {fileID: 2144305642578099861}
-  - component: {fileID: 936937279038936922}
   - component: {fileID: 5781310300456439795}
-  - component: {fileID: -6825197299109110522}
+  - component: {fileID: 1853370199560263133}
   m_Layer: 0
   m_Name: Dot_ECS
   m_TagString: Untagged
@@ -120,26 +119,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9091291869205918401}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39f9cc17e2b75cc429ec95d94aef4eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &936937279038936922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9091291869205918401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4fcfa9d9421e03418e843f0b69158ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Rigid: {fileID: 0}
-  m_PixelAdjuster: {fileID: 2144305642578099861}
-  m_PixelDiffusioner: {fileID: 5781310300456439795}
 --- !u!114 &5781310300456439795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ForceGain: 0.1
---- !u!114 &-6825197299109110522
+--- !u!114 &1853370199560263133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,3 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9ab37bd294e740895432195668e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Rigid: {fileID: 0}
+  m_PixelAdjuster: {fileID: 2144305642578099861}
+  m_PixelDiffusioner: {fileID: 5781310300456439795}

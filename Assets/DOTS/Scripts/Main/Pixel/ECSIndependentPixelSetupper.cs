@@ -1,9 +1,12 @@
-﻿using UnityEngine;
-using pf35301.Extensions.Editor;
+using UnityEngine;
+using Unity.Entities;
 
-namespace Matomaru.Main {
-    //[RequireComponent(typeof(PixelAdjuster))]
-    public class IndependentPixelSetupper : MonoBehaviour, IIndependentPixel {
+using pf35301.Extensions.Editor;
+using Matomaru.Main;
+
+namespace Matomaru.ECS.Main {
+
+    class ECSIndependentPixelSetupper : MonoBehaviour, IIndependentPixel {
 
         public bool IsIndependent { get; private set; } = false;
 
@@ -32,6 +35,8 @@ namespace Matomaru.Main {
             m_PixelDiffusioner?.AddForceWithHitPoint(m_Rigid, hitPoint);
 
             IsIndependent = true;
+
+            gameObject.AddComponent<ConvertToEntity>();
         }
 
         public void FollowTarget(Transform target) {
