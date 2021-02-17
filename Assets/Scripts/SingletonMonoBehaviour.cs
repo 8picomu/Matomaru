@@ -10,7 +10,7 @@ namespace Matomaru.Main {
                     instance = (T)FindObjectOfType(typeof(T));
 
                     if(instance == null) {
-                        Debug.LogError(typeof(T) + "does not exist in the scene.");
+                        Debug.LogError(typeof(T) + " does not exist in the scene.");
                     }
                 }
 
