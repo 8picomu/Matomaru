@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using pf35301.Extensions;
+using eightpicomu.Extensions;
 
 namespace Matomaru.Main.Editor {
     class EditorWindowPixelBuilder : EditorWindow {

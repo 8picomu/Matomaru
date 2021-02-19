@@ -1,7 +1,11 @@
+Unity 2020.2.4f1
+
 # Assets
+Entities 0.11.2 //HybridECS  
+Universal RP 10.3.1  
+Havok Physics for Unity 0.6.0  
 UniRx 6.2.2  
 UniTask 2.0.37  
 InputSystem 1.0.1  
-[System.Memory](https://www.nuget.org/packages/System.Memory/) 4.5.4  
-[System.Buffers](https://www.nuget.org/packages/System.Buffers/) 4.5.1  
-[System.Runtime.CompilerServices.Unsafe](https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/) 5.0.0  
+
+現在[この設定](https://github.com/8picomu/Matomaru/issues/3)を行わないとPixelがちゃんとビルドされず動かない

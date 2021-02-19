@@ -14,7 +14,9 @@ namespace Matomaru.Main {
 
             if(IClickableGameObjectChildren.Count != 0) {
                 foreach(var child in IClickableGameObjectChildren) {
-                    child.GetComponent<IClickable>()?.ClickWithHitPoint(hitPoint);
+                    foreach(var value in child.GetComponents<IClickable>()) {
+                        value.ClickWithHitPoint(hitPoint);
+                    }
                 }
             }
 

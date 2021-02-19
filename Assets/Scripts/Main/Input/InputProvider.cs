@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UniRx;
-using pf35301.Extensions.Editor;
+using eightpicomu.Extensions.Editor;
 
 namespace Matomaru.Main {
 
@@ -19,7 +19,7 @@ namespace Matomaru.Main {
         private ISubject<Vector2> m_RightClickSubject;
 
         [SerializeField, ReadOnly]
-        public Vector2 m_MousePosition = new Vector2();
+        public static Vector2 MousePosition = new Vector2();
 
         private void Awake() {
             m_LStickSubject = new LStick();
@@ -49,13 +49,13 @@ namespace Matomaru.Main {
 
         public void OnClick(InputAction.CallbackContext context) {
             if(context.performed) {
-                m_RightClickSubject.OnNext(m_MousePosition);
+                m_RightClickSubject.OnNext(MousePosition);
             }
         }
 
         public void OnMousePosition(InputAction.CallbackContext context) {
             if(context.performed) {
-                m_MousePosition = context.ReadValue<Vector2>();
+                MousePosition = context.ReadValue<Vector2>();
             }
         }
     }
