@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5781310300456439795}
   - component: {fileID: 1853370199560263133}
   - component: {fileID: -3213947418463387429}
-  - component: {fileID: 3252878383898083578}
   m_Layer: 0
   m_Name: Dot_ECS
   m_TagString: Untagged
@@ -204,15 +203,3 @@ MonoBehaviour:
     Tag05: 0
     Tag06: 0
     Tag07: 0
---- !u!114 &3252878383898083578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9091291869205918401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a716878cd96854e901c4ca1c3e7cfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
