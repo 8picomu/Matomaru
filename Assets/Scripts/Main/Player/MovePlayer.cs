@@ -5,7 +5,7 @@ using eightpicomu.Extensions.Editor;
 
 namespace Matomaru.Main {
     
-    class PlayerMover : MonoBehaviour {
+    class MovePlayer : MonoBehaviour {
 
         private IInputObservables m_InputObservables;
 
