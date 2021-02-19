@@ -15,10 +15,14 @@ namespace Matomaru.ECS.Main {
 
             Entities
                 .ForEach((ref PhysicsVelocity physicsVelosity, in Translation translation) => {
-                    var value = Random.Range(1.0f, 10.0f);
+                    var value = Random.Range(300.0f, 400.0f);
 
-                    physicsVelosity.Linear.x = (pos.x - translation.Value.x) * value;
-                    physicsVelosity.Linear.y = (pos.y - translation.Value.y) * value;
+                    var positionVector = new Vector3(translation.Value.x, translation.Value.y, translation.Value.z);
+
+                    var direction = (pos - positionVector).normalized;
+
+                    physicsVelosity.Linear.x = direction.x * value;
+                    physicsVelosity.Linear.y = direction.y * value;
             }).Run();
         }
     }
