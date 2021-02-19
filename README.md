@@ -1,5 +1,8 @@
 Unity 2020.2.4f1
 
+# Setup
+`git submodule update -i`
+
 # Assets
 Entities 0.11.2 //HybridECS  
 Universal RP 10.3.1  
