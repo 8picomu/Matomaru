@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Matomaru.Main {
     class MainInputActionHolder : MonoBehaviour {

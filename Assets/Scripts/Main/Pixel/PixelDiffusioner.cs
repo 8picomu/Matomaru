@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using eightpicomu.Extensions.Editor;
 
 namespace Matomaru.Main {
     public class PixelDiffusioner : MonoBehaviour {
