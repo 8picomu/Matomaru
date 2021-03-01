@@ -1,14 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+using eightpicomu.Extensions;
 
 namespace Matomaru.Main {
 
     [CreateAssetMenu(menuName = "ScriptableObject/PixelCanvasData")]
     public class PixelCanvasData : ScriptableObject, IPixelCanvas {
-        public List<PixelCanvasListWrapper> Canvas { get; set; }
+        public List<PixelCanvasArrayWrapper> m_Canvas;
 
-        public int CanvasXSize { get; set; }
+        public List<PixelCanvasArrayWrapper> Canvas { get => m_Canvas; set => m_Canvas = value; }
 
-        public int CanvasYSize { get; set; }
+        public int CanvasXSize;
+
+        public int CanvasYSize;
     }
+
+    
+    [Serializable]
+    public class PixelCanvasArrayWrapper : BoolArrayWrapper { }
 }

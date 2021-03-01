@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using eightpicomu.Extensions;
 
 namespace Matomaru.Main {
     public class PixelBuilder : MonoBehaviour, IPixelCanvas {
@@ -26,7 +25,7 @@ namespace Matomaru.Main {
 
         //[Y][X]
         [SerializeField]
-        public List<PixelCanvasListWrapper> Canvas { get; set; }
+        public List<PixelCanvasArrayWrapper> Canvas { get => m_CanvasData.Canvas; set => m_CanvasData.Canvas = value; }
 
         [Header("AutoBuild")]
         [SerializeField]
@@ -40,26 +39,15 @@ namespace Matomaru.Main {
         public void Build() {
             if(m_CanvasData == null) throw new NullReferenceException();
 
-            Canvas = new List<PixelCanvasListWrapper>(m_CanvasData.Canvas);
-
             CanvasXSize = m_CanvasData.CanvasXSize;
             CanvasYSize = m_CanvasData.CanvasYSize;
 
             if(m_Dot == null) throw new NullReferenceException();
 
-            if(CanvasXSize % 2 != 0) {
-                Debug.LogError("Please set odd in CanvasXSize");
-                return;
-            }
-            if(CanvasYSize % 2 != 0) {
-                Debug.LogError("Please set odd in CanvasYSize");
-                return;
-            }
-
             m_IPixelBreaker = GetComponent<IPixelBreaker>();
 
             foreach(var record in Canvas.Select((value, index) => new { value, index })) {
-                foreach(var item in record.value.List.Select((value, index) => new { value, index })) {
+                foreach(var item in record.value.Array.Select((value, index) => new { value, index })) {
                     if(item.value) {
                         var dot = Instantiate(m_Dot);
                         dot.transform.parent = transform;
@@ -74,7 +62,4 @@ namespace Matomaru.Main {
             }
         }
     }
-
-    [Serializable]
-    public class PixelCanvasListWrapper : ListWrapper<bool> { }
 }

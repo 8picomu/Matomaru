@@ -8,7 +8,7 @@ using eightpicomu.Extensions;
 namespace Matomaru.Main.Editor {
     class EditorWindowPixelBuilder : EditorWindow {
 
-        private List<PixelCanvasListWrapper> m_copy;
+        private List<PixelCanvasArrayWrapper> m_copy;
 
         public int CanvasXSize;
         public int CanvasYSize;
@@ -47,35 +47,35 @@ namespace Matomaru.Main.Editor {
                 }
 
                 using(new EditorGUILayout.VerticalScope()) {
-                    for(var recordIndex = 0; recordIndex < m_copy.Count; recordIndex++) {
+                    for(var recordIndex = 0; recordIndex < m_copy.Count(); recordIndex++) {
                         using(new EditorGUILayout.HorizontalScope()) {
-                            for(var itemIndex = 0; itemIndex < m_copy[recordIndex].List.Count; itemIndex++) {
-                                m_copy[recordIndex].List[itemIndex] = EditorGUILayout.Toggle(m_copy[recordIndex].List[itemIndex], GUILayout.Width(15));
+                            for(var itemIndex = 0; itemIndex < m_copy[recordIndex].Array.Count(); itemIndex++) {
+                                m_copy[recordIndex].Array[itemIndex] = EditorGUILayout.Toggle(m_copy[recordIndex].Array[itemIndex], GUILayout.Width(15));
                             }
                         }
                     }
 
                     if(GUILayout.Button("Create ScriptableObject")) {
-                        CreateScriptableObject(new List<PixelCanvasListWrapper>(m_copy), m_copy[0].List.Count, m_copy.Count);
+                        CreateScriptableObject(m_copy, m_copy[0].Array.Count(), m_copy.Count());
                     }
                 }
             }
         }
 
-        private List<PixelCanvasListWrapper> createEmptyPixelCanvasData() {
+        private List<PixelCanvasArrayWrapper> createEmptyPixelCanvasData() {
             return Enumerable.Range(0, CanvasYSize).Select(
                     y => {
-                        var list = new bool[CanvasXSize].Select(x => true).ToList();
-                        var wrapper = new PixelCanvasListWrapper();
-                        wrapper.List = list;
+                        var list = new bool[CanvasXSize].Select(x => true).ToArray();
+                        var wrapper = new PixelCanvasArrayWrapper();
+                        wrapper.Array = list;
                         return wrapper;
                     }).ToList();
         }
 
-        private void CreateScriptableObject(List<PixelCanvasListWrapper> list, int CanvasXSize, int CanvasYSize) {
+        private void CreateScriptableObject(List<PixelCanvasArrayWrapper> list, int CanvasXSize, int CanvasYSize) {
             var so = CreateInstance<PixelCanvasData>();
 
-            so.Canvas = list;
+            so.Canvas = new List<PixelCanvasArrayWrapper>(list);
             so.CanvasXSize = CanvasXSize;
             so.CanvasYSize = CanvasYSize;
             ProjectWindowUtil.CreateAsset(so, "PixelCanvasData.asset");
