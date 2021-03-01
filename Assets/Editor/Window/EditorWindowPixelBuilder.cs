@@ -8,6 +8,8 @@ using eightpicomu.Extensions;
 namespace Matomaru.Main.Editor {
     class EditorWindowPixelBuilder : EditorWindow {
 
+        private Vector2 scrollPosition = Vector2.zero;
+
         private List<PixelCanvasArrayWrapper> m_copy;
 
         public int CanvasXSize;
@@ -35,6 +37,8 @@ namespace Matomaru.Main.Editor {
 
         private void OnGUI() {
 
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
             using(new EditorGUILayout.VerticalScope()) {
 
                 using(new EditorGUILayout.HorizontalScope()) {
@@ -60,6 +64,8 @@ namespace Matomaru.Main.Editor {
                     }
                 }
             }
+
+            EditorGUILayout.EndScrollView();
         }
 
         private List<PixelCanvasArrayWrapper> createEmptyPixelCanvasData() {
