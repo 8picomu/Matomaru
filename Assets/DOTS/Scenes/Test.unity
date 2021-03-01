@@ -561,7 +561,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CanvasData
       value: 
-      objectReference: {fileID: 11400000, guid: 03e87a5c6d8abcc47be4103be008f783,
+      objectReference: {fileID: 11400000, guid: 0789e7e29e389a14b92765c657a54f20,
         type: 2}
     - target: {fileID: 7344631789487362057, guid: ca712471fbbaf0e478db0a46cdd54bd5,
         type: 3}

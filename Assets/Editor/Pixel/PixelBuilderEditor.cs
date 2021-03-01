@@ -1,18 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
+
 
 namespace Matomaru.Main.Editor {
 
     [CustomEditor(typeof(PixelBuilder))]
-    class PixelBuilderEditor : UnityEditor.Editor {
-
+    public class PixelBuilderEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
 
-            base.OnInspectorGUI();
-            
             if(GUILayout.Button("Open PixelEditor")) {
-                var instance = (PixelBuilder)target;
+                var instance = target as PixelBuilder;
                 EditorWindowPixelBuilder.Open(instance.CanvasYSize, instance.CanvasXSize);
+            }
+
+            base.OnInspectorGUI();
+
+            if(GUILayout.Button("Build")) {
+                var instance = target as PixelBuilder;
+
+                instance.Build();
             }
         }
     }

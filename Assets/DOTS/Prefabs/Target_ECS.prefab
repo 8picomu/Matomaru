@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7344631788032180035}
   - component: {fileID: 7344631788032180032}
-  - component: {fileID: 7344631788032180033}
   m_Layer: 0
   m_Name: Pixels
   m_TagString: Untagged
@@ -44,25 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be62ab2f10db6854ea6266733cc4fa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanvasData: {fileID: 11400000, guid: 163720052fe9acd4a84a91e0b085487f, type: 2}
+  m_CanvasData: {fileID: 11400000, guid: 0789e7e29e389a14b92765c657a54f20, type: 2}
   m_Dot: {fileID: 9091291869205918401, guid: 36b9d73c7024b304bb9515bbe986932c, type: 3}
   CanvasXSize: 10
   CanvasYSize: 10
-  m_IsAutoBuild: 0
+  m_IsMockBuild: 0
   m_CanvansIncludingPixel: 0
---- !u!114 &7344631788032180033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7344631788032180038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bcb3b214c2a7bb46a20ca4843be3b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IClickableGameObjectChildren: []
 --- !u!1 &7344631789487362061
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,9 +58,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7344631789487362057}
-  - component: {fileID: 7344631789487362062}
   - component: {fileID: 7344631789487362063}
-  - component: {fileID: 7344631789487362060}
   m_Layer: 0
   m_Name: Target_ECS
   m_TagString: Untagged
@@ -97,18 +81,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7344631789487362062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7344631789487362061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f9cc17e2b75cc429ec95d94aef4eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &7344631789487362063
 Rigidbody2D:
   serializedVersion: 4
@@ -130,17 +102,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7344631789487362060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7344631789487362061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bcb3b214c2a7bb46a20ca4843be3b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IClickableGameObjectChildren:
-  - {fileID: 7344631788032180038}

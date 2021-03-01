@@ -36,7 +36,7 @@ namespace Matomaru.ECS.Main {
 
             IsIndependent = true;
 
-            gameObject.AddComponent<ConvertToEntity>();
+            //gameObject.AddComponent<ConvertToEntity>();
         }
 
         public void FollowTarget(Transform target) {

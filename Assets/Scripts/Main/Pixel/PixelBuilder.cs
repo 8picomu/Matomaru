@@ -30,27 +30,21 @@ namespace Matomaru.Main {
 
         [Header("AutoBuild")]
         [SerializeField]
-        private bool m_IsAutoBuild;
+        private bool m_IsMockBuild;
 
         [SerializeField]
         private uint m_CanvansIncludingPixel;
 
         private IPixelBreaker m_IPixelBreaker;
 
-        private void Awake() { 
-            if(m_IsAutoBuild == false) {
-                if(m_CanvasData == null) throw new NullReferenceException();
+        public void Build() {
+            if(m_CanvasData == null) throw new NullReferenceException();
 
-                Canvas = new List<PixelCanvasListWrapper>(m_CanvasData.Canvas);
+            Canvas = new List<PixelCanvasListWrapper>(m_CanvasData.Canvas);
 
-                CanvasXSize = m_CanvasData.CanvasXSize;
-                CanvasYSize = m_CanvasData.CanvasYSize;
+            CanvasXSize = m_CanvasData.CanvasXSize;
+            CanvasYSize = m_CanvasData.CanvasYSize;
 
-                return;
-            }
-        }
-
-        private void Start() {
             if(m_Dot == null) throw new NullReferenceException();
 
             if(CanvasXSize % 2 != 0) {

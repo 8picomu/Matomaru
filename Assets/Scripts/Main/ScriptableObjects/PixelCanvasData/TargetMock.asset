@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fef1cfd71e4ef34296c754e0e9ed649, type: 3}
-  m_Name: TargetMock 1
+  m_Name: TargetMock
   m_EditorClassIdentifier: 
