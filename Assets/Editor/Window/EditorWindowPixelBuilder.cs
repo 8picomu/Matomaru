@@ -6,7 +6,7 @@ using UnityEngine;
 using eightpicomu.Extensions;
 
 namespace Matomaru.Main.Editor {
-    class EditorWindowPixelBuilder : EditorWindow {
+    class PixelEditorWindow : EditorWindow {
 
         private Vector2 scrollPosition = Vector2.zero;
 
@@ -17,7 +17,7 @@ namespace Matomaru.Main.Editor {
 
         public static void Open(int CanvasYSize, int CanvasXSize) {
 
-            var window = GetWindow<EditorWindowPixelBuilder>("PixelEditor");
+            var window = GetWindow<PixelEditorWindow>("PixelEditor");
 
             window.CanvasXSize = CanvasXSize;
             window.CanvasYSize = CanvasYSize;
@@ -27,7 +27,7 @@ namespace Matomaru.Main.Editor {
 
         [MenuItem("Window/PixelEditor")]
         public static void OpenByMenu() {
-            var window = GetWindow<EditorWindowPixelBuilder>("PixelEditor");
+            var window = GetWindow<PixelEditorWindow>("PixelEditor");
 
             window.CanvasXSize = 10;
             window.CanvasYSize = 10;

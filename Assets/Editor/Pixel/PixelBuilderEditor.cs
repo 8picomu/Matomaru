@@ -5,12 +5,12 @@ using UnityEditor;
 namespace Matomaru.Main.Editor {
 
     [CustomEditor(typeof(PixelBuilder))]
-    public class PixelBuilderEditor : UnityEditor.Editor {
+    public class PixelEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
 
             if(GUILayout.Button("Open PixelEditor")) {
                 var instance = target as PixelBuilder;
-                EditorWindowPixelBuilder.Open(instance.CanvasYSize, instance.CanvasXSize);
+                PixelEditorWindow.Open(instance.CanvasYSize, instance.CanvasXSize);
             }
 
             base.OnInspectorGUI();
