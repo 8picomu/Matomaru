@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using eightpicomu.Extensions;
 
 namespace Matomaru.Main.Editor {
     class PixelEditorWindow : EditorWindow {

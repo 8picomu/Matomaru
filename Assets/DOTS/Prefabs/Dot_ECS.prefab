@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9104371657807437527}
   - component: {fileID: -3253373024973939421}
   - component: {fileID: -1873048247487917182}
+  - component: {fileID: -624774305566016113}
   m_Layer: 0
   m_Name: Dot_ECS
   m_TagString: Untagged
@@ -174,3 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
+--- !u!114 &-624774305566016113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091291869205918401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a08e4fe9f4d47d438497da7b0e5664e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
