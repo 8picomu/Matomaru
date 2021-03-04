@@ -5,7 +5,7 @@ using Unity.Mathematics;
 namespace Matomaru.ECS.Main {
 
     [Serializable]
-    public struct CameraPosComponent : IComponentData {
+    public struct CameraPosComponent : ISharedComponentData {
         public float3 position;
     }
 }
