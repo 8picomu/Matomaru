@@ -19,7 +19,7 @@ namespace Matomaru.ECS.Main {
 
         protected override void OnCreate()
         {
-            query = GetEntityQuery(typeof(PhysicsVelocity), ComponentType.ReadOnly<Translation>(), );
+            query = GetEntityQuery(typeof(PhysicsVelocity), ComponentType.ReadOnly<Translation>());
             random = new Random(123);
         }
 
@@ -44,6 +44,7 @@ namespace Matomaru.ECS.Main {
 
             [ReadOnly]
             public ComponentTypeHandle<Translation> translationType;
+
             public float3 mousePos;
             public Random random;
 
@@ -53,7 +54,10 @@ namespace Matomaru.ECS.Main {
                 var translations = chunk.GetNativeArray(translationType);
 
                 for(var i = 0; i < chunk.Count; i++) {
-                    physicsVelocities[i] = new PhysicsVelocity { Linear = (translations[i].Value - mousePos) * random.NextFloat(0.1f, 1.0f) };
+                    if(math.distance(translations[i].Value, mousePos) < 50) {
+                        var rndValue = random.NextFloat(1.0f, 10.0f);
+                        physicsVelocities[i] = new PhysicsVelocity { Linear = new float3((mousePos.x - translations[i].Value.x) * rndValue, (mousePos.y - translations[i].Value.y) * rndValue, 0) };
+                    }
                 }
             }
         }
