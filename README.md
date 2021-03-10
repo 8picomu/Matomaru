@@ -13,5 +13,3 @@ UniRx 6.2.2
 UniTask 2.0.37  
 InputSystem 1.0.1  
 2D Pixel Perfect 4.0.1  
-
-現在[この設定](https://github.com/8picomu/Matomaru/issues/3)を行わないとPixelがちゃんとビルドされず動かない
