@@ -1,21 +1,21 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using eightpicomu.Extensions;
 
 namespace Matomaru.Main.Editor {
-    class EditorWindowPixelBuilder : EditorWindow {
+    class PixelEditorWindow : EditorWindow {
 
-        private List<PixelCanvasListWrapper> m_copy;
+        private Vector2 scrollPosition = Vector2.zero;
+
+        private List<PixelCanvasArrayWrapper> m_copy;
 
         public int CanvasXSize;
         public int CanvasYSize;
 
         public static void Open(int CanvasYSize, int CanvasXSize) {
 
-            var window = GetWindow<EditorWindowPixelBuilder>("PixelEditor");
+            var window = GetWindow<PixelEditorWindow>("PixelEditor");
 
             window.CanvasXSize = CanvasXSize;
             window.CanvasYSize = CanvasYSize;
@@ -25,7 +25,7 @@ namespace Matomaru.Main.Editor {
 
         [MenuItem("Window/PixelEditor")]
         public static void OpenByMenu() {
-            var window = GetWindow<EditorWindowPixelBuilder>("PixelEditor");
+            var window = GetWindow<PixelEditorWindow>("PixelEditor");
 
             window.CanvasXSize = 10;
             window.CanvasYSize = 10;
@@ -34,6 +34,8 @@ namespace Matomaru.Main.Editor {
         }
 
         private void OnGUI() {
+
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
             using(new EditorGUILayout.VerticalScope()) {
 
@@ -47,35 +49,37 @@ namespace Matomaru.Main.Editor {
                 }
 
                 using(new EditorGUILayout.VerticalScope()) {
-                    for(var recordIndex = 0; recordIndex < m_copy.Count; recordIndex++) {
+                    for(var recordIndex = 0; recordIndex < m_copy.Count(); recordIndex++) {
                         using(new EditorGUILayout.HorizontalScope()) {
-                            for(var itemIndex = 0; itemIndex < m_copy[recordIndex].List.Count; itemIndex++) {
-                                m_copy[recordIndex].List[itemIndex] = EditorGUILayout.Toggle(m_copy[recordIndex].List[itemIndex], GUILayout.Width(15));
+                            for(var itemIndex = 0; itemIndex < m_copy[recordIndex].Array.Count(); itemIndex++) {
+                                m_copy[recordIndex].Array[itemIndex] = EditorGUILayout.Toggle(m_copy[recordIndex].Array[itemIndex], GUILayout.Width(15));
                             }
                         }
                     }
 
                     if(GUILayout.Button("Create ScriptableObject")) {
-                        CreateScriptableObject(new List<PixelCanvasListWrapper>(m_copy), m_copy[0].List.Count, m_copy.Count);
+                        CreateScriptableObject(m_copy, m_copy[0].Array.Count(), m_copy.Count());
                     }
                 }
             }
+
+            EditorGUILayout.EndScrollView();
         }
 
-        private List<PixelCanvasListWrapper> createEmptyPixelCanvasData() {
+        private List<PixelCanvasArrayWrapper> createEmptyPixelCanvasData() {
             return Enumerable.Range(0, CanvasYSize).Select(
                     y => {
-                        var list = new bool[CanvasXSize].Select(x => true).ToList();
-                        var wrapper = new PixelCanvasListWrapper();
-                        wrapper.List = list;
+                        var list = new bool[CanvasXSize].Select(x => true).ToArray();
+                        var wrapper = new PixelCanvasArrayWrapper();
+                        wrapper.Array = list;
                         return wrapper;
                     }).ToList();
         }
 
-        private void CreateScriptableObject(List<PixelCanvasListWrapper> list, int CanvasXSize, int CanvasYSize) {
+        private void CreateScriptableObject(List<PixelCanvasArrayWrapper> list, int CanvasXSize, int CanvasYSize) {
             var so = CreateInstance<PixelCanvasData>();
 
-            so.Canvas = list;
+            so.Canvas = new List<PixelCanvasArrayWrapper>(list);
             so.CanvasXSize = CanvasXSize;
             so.CanvasYSize = CanvasYSize;
             ProjectWindowUtil.CreateAsset(so, "PixelCanvasData.asset");

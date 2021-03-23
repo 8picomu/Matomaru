@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UniRx;
 
 namespace Matomaru.Main {
     public interface IInputObservables {
